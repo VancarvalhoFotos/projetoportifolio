@@ -490,11 +490,14 @@
 .logo {
     display: flex;
     align-items: center;
+    height: 100%;
 }
 
 .logo img {
-    height: 50px;
+    height: 100%;
     width: auto;
+    max-height: 50px;
+    object-fit: contain;
 }
 
 .nav-links {
