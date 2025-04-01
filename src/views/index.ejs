@@ -19,20 +19,32 @@
         <section class="hero" id="inicio">
             <div class="hero-carousel">
                 <div class="carousel-container">
-                    <div class="carousel-slide">
-                        <img src="/images/portfolio/newborn-8.jpg" alt="Ensaio Newborn">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="/images/portfolio/alice-no-pais-das-maravilhas.jpg" alt="Acompanhamento Mensal">
-                    </div>
-                    <div class="carousel-slide">
-                        <img src="/images/portfolio/smash-the-cake.jpg" alt="Smash the Cake">
-                    </div>
+                    <% if (ensaiosPorCategoria.newborn && ensaiosPorCategoria.newborn.length > 0) { %>
+                        <div class="carousel-slide">
+                            <img src="<%= ensaiosPorCategoria.newborn[0].imagens[0].url %>" alt="<%= ensaiosPorCategoria.newborn[0].titulo %>">
+                        </div>
+                    <% } %>
+                    <% if (ensaiosPorCategoria.gestante && ensaiosPorCategoria.gestante.length > 0) { %>
+                        <div class="carousel-slide">
+                            <img src="<%= ensaiosPorCategoria.gestante[0].imagens[0].url %>" alt="<%= ensaiosPorCategoria.gestante[0].titulo %>">
+                        </div>
+                    <% } %>
+                    <% if (ensaiosPorCategoria.smash && ensaiosPorCategoria.smash.length > 0) { %>
+                        <div class="carousel-slide">
+                            <img src="<%= ensaiosPorCategoria.smash[0].imagens[0].url %>" alt="<%= ensaiosPorCategoria.smash[0].titulo %>">
+                        </div>
+                    <% } %>
+                    <% if (ensaiosPorCategoria.mensal && ensaiosPorCategoria.mensal.length > 0) { %>
+                        <div class="carousel-slide">
+                            <img src="<%= ensaiosPorCategoria.mensal[0].imagens[0].url %>" alt="<%= ensaiosPorCategoria.mensal[0].titulo %>">
+                        </div>
+                    <% } %>
                 </div>
                 <div class="carousel-dots">
-                    <span class="dot active"></span>
-                    <span class="dot"></span>
-                    <span class="dot"></span>
+                    <% const totalSlides = Object.values(ensaiosPorCategoria).filter(categoria => categoria.length > 0).length; %>
+                    <% for(let i = 0; i < totalSlides; i++) { %>
+                        <span class="dot <%= i === 0 ? 'active' : '' %>"></span>
+                    <% } %>
                 </div>
             </div>
             <div class="hero-content container">
