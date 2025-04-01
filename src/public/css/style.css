@@ -663,4 +663,12 @@
 
 .ensaio-card .btn-primary:hover i {
     transform: translateX(5px);
+}
+
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background-color: #000;
+    overflow: hidden;
+    padding-top: 0;
 } 
