@@ -175,20 +175,26 @@
         <section class="portfolio-section">
             <div class="container">
                 <h2>Portfólio</h2>
+                <p class="portfolio-intro">
+                    Bem-vindo ao meu portfólio! Aqui você encontrará uma seleção dos meus trabalhos mais recentes, 
+                    organizados por categorias. Cada ensaio conta uma história única e especial.
+                </p>
                 
                 <!-- Newborn -->
                 <% if (ensaiosPorCategoria.newborn && ensaiosPorCategoria.newborn.length > 0) { %>
                     <div class="portfolio-category">
                         <h3>Newborn</h3>
-                        <div class="portfolio-grid">
+                        <div class="ensaio-grid">
                             <% ensaiosPorCategoria.newborn.forEach(ensaio => { %>
-                                <div class="portfolio-item">
-                                    <a href="/ensaios/<%= ensaio.id %>">
-                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
-                                        <div class="portfolio-overlay">
-                                            <h4><%= ensaio.titulo %></h4>
-                                        </div>
-                                    </a>
+                                <div class="ensaio-card">
+                                    <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                    <div class="ensaio-card-content">
+                                        <h3><%= ensaio.titulo %></h3>
+                                        <a href="/ensaios/<%= ensaio.id %>" class="btn-primary">
+                                            Ver mais
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             <% }); %>
                         </div>
@@ -199,15 +205,17 @@
                 <% if (ensaiosPorCategoria.mensal && ensaiosPorCategoria.mensal.length > 0) { %>
                     <div class="portfolio-category">
                         <h3>Acompanhamento Mensal</h3>
-                        <div class="portfolio-grid">
+                        <div class="ensaio-grid">
                             <% ensaiosPorCategoria.mensal.forEach(ensaio => { %>
-                                <div class="portfolio-item">
-                                    <a href="/ensaios/<%= ensaio.id %>">
-                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
-                                        <div class="portfolio-overlay">
-                                            <h4><%= ensaio.titulo %></h4>
-                                        </div>
-                                    </a>
+                                <div class="ensaio-card">
+                                    <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                    <div class="ensaio-card-content">
+                                        <h3><%= ensaio.titulo %></h3>
+                                        <a href="/ensaios/<%= ensaio.id %>" class="btn-primary">
+                                            Ver mais
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             <% }); %>
                         </div>
@@ -218,15 +226,17 @@
                 <% if (ensaiosPorCategoria.smash && ensaiosPorCategoria.smash.length > 0) { %>
                     <div class="portfolio-category">
                         <h3>Smash The Cake</h3>
-                        <div class="portfolio-grid">
+                        <div class="ensaio-grid">
                             <% ensaiosPorCategoria.smash.forEach(ensaio => { %>
-                                <div class="portfolio-item">
-                                    <a href="/ensaios/<%= ensaio.id %>">
-                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
-                                        <div class="portfolio-overlay">
-                                            <h4><%= ensaio.titulo %></h4>
-                                        </div>
-                                    </a>
+                                <div class="ensaio-card">
+                                    <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                    <div class="ensaio-card-content">
+                                        <h3><%= ensaio.titulo %></h3>
+                                        <a href="/ensaios/<%= ensaio.id %>" class="btn-primary">
+                                            Ver mais
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             <% }); %>
                         </div>
@@ -237,15 +247,17 @@
                 <% if (ensaiosPorCategoria.gestante && ensaiosPorCategoria.gestante.length > 0) { %>
                     <div class="portfolio-category">
                         <h3>Gestante</h3>
-                        <div class="portfolio-grid">
+                        <div class="ensaio-grid">
                             <% ensaiosPorCategoria.gestante.forEach(ensaio => { %>
-                                <div class="portfolio-item">
-                                    <a href="/ensaios/<%= ensaio.id %>">
-                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
-                                        <div class="portfolio-overlay">
-                                            <h4><%= ensaio.titulo %></h4>
-                                        </div>
-                                    </a>
+                                <div class="ensaio-card">
+                                    <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                    <div class="ensaio-card-content">
+                                        <h3><%= ensaio.titulo %></h3>
+                                        <a href="/ensaios/<%= ensaio.id %>" class="btn-primary">
+                                            Ver mais
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             <% }); %>
                         </div>
@@ -256,15 +268,17 @@
                 <% if (ensaiosPorCategoria.especial && ensaiosPorCategoria.especial.length > 0) { %>
                     <div class="portfolio-category">
                         <h3>Especial</h3>
-                        <div class="portfolio-grid">
+                        <div class="ensaio-grid">
                             <% ensaiosPorCategoria.especial.forEach(ensaio => { %>
-                                <div class="portfolio-item">
-                                    <a href="/ensaios/<%= ensaio.id %>">
-                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
-                                        <div class="portfolio-overlay">
-                                            <h4><%= ensaio.titulo %></h4>
-                                        </div>
-                                    </a>
+                                <div class="ensaio-card">
+                                    <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                    <div class="ensaio-card-content">
+                                        <h3><%= ensaio.titulo %></h3>
+                                        <a href="/ensaios/<%= ensaio.id %>" class="btn-primary">
+                                            Ver mais
+                                            <i class="fas fa-arrow-right"></i>
+                                        </a>
+                                    </div>
                                 </div>
                             <% }); %>
                         </div>
