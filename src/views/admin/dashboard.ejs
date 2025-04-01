@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-dashboard">
+        <%- include('partials/navbar') %>
+
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Dashboard</h1>
+            </div>
+
+            <div class="container">
+                <div class="dashboard-header">
+                    <h1>Bem-vinda, <%= usuario.name %></h1>
+                    <p>Gerencie seus ensaios fotográficos</p>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-images"></i>
+                        <div class="stat-info">
+                            <h3>Total de Ensaios</h3>
+                            <p><%= totalEnsaios %></p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-camera"></i>
+                        <div class="stat-info">
+                            <h3>Total de Fotos</h3>
+                            <p><%= totalFotos %></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="recent-ensaios">
+                    <h2>Ensaios Recentes</h2>
+                    <div class="ensaios-grid">
+                        <% ensaios.forEach(ensaio => { %>
+                            <div class="ensaio-card">
+                                <img src="<%= ensaio.imagem_capa %>" alt="<%= ensaio.titulo %>">
+                                <div class="ensaio-info">
+                                    <h3><%= ensaio.titulo %></h3>
+                                    <p><%= ensaio.categoria %></p>
+                                    <div class="ensaio-actions">
+                                        <a href="/ensaios/<%= ensaio.id %>" class="btn-secondary">
+                                            <i class="fas fa-eye"></i>
+                                            Visualizar
+                                        </a>
+                                        <a href="/admin/ensaios/<%= ensaio.id %>/editar" class="btn-primary">
+                                            <i class="fas fa-edit"></i>
+                                            Editar
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

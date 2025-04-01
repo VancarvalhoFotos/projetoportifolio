@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciar Ensaios - Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-ensaios">
+        <%- include('partials/navbar') %>
+
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Gerenciar Ensaios</h1>
+            </div>
+
+            <% if (ensaiosPorCategoria.newborn && ensaiosPorCategoria.newborn.length > 0) { %>
+                <div class="admin-category">
+                    <h2>Newborn</h2>
+                    <div class="admin-grid">
+                        <% ensaiosPorCategoria.newborn.forEach(ensaio => { %>
+                            <div class="admin-card">
+                                <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                <div class="admin-card-content">
+                                    <h3><%= ensaio.titulo %></h3>
+                                    <div class="admin-card-actions">
+                                        <a href="/admin/ensaios/<%= ensaio.id %>/editar" class="btn-primary">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <form action="/admin/ensaios/<%= ensaio.id %>/excluir" method="POST" style="display: inline;">
+                                            <button type="submit" class="btn-danger" onclick="return confirm('Tem certeza que deseja excluir este ensaio?')">
+                                                <i class="fas fa-trash"></i> Excluir
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+
+            <% if (ensaiosPorCategoria.mensal && ensaiosPorCategoria.mensal.length > 0) { %>
+                <div class="admin-category">
+                    <h2>Acompanhamento Mensal</h2>
+                    <div class="admin-grid">
+                        <% ensaiosPorCategoria.mensal.forEach(ensaio => { %>
+                            <div class="admin-card">
+                                <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                <div class="admin-card-content">
+                                    <h3><%= ensaio.titulo %></h3>
+                                    <div class="admin-card-actions">
+                                        <a href="/admin/ensaios/<%= ensaio.id %>/editar" class="btn-primary">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <form action="/admin/ensaios/<%= ensaio.id %>/excluir" method="POST" style="display: inline;">
+                                            <button type="submit" class="btn-danger" onclick="return confirm('Tem certeza que deseja excluir este ensaio?')">
+                                                <i class="fas fa-trash"></i> Excluir
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+
+            <% if (ensaiosPorCategoria.smash && ensaiosPorCategoria.smash.length > 0) { %>
+                <div class="admin-category">
+                    <h2>Smash The Cake</h2>
+                    <div class="admin-grid">
+                        <% ensaiosPorCategoria.smash.forEach(ensaio => { %>
+                            <div class="admin-card">
+                                <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                <div class="admin-card-content">
+                                    <h3><%= ensaio.titulo %></h3>
+                                    <div class="admin-card-actions">
+                                        <a href="/admin/ensaios/<%= ensaio.id %>/editar" class="btn-primary">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <form action="/admin/ensaios/<%= ensaio.id %>/excluir" method="POST" style="display: inline;">
+                                            <button type="submit" class="btn-danger" onclick="return confirm('Tem certeza que deseja excluir este ensaio?')">
+                                                <i class="fas fa-trash"></i> Excluir
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+
+            <% if (ensaiosPorCategoria.gestante && ensaiosPorCategoria.gestante.length > 0) { %>
+                <div class="admin-category">
+                    <h2>Gestante</h2>
+                    <div class="admin-grid">
+                        <% ensaiosPorCategoria.gestante.forEach(ensaio => { %>
+                            <div class="admin-card">
+                                <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                <div class="admin-card-content">
+                                    <h3><%= ensaio.titulo %></h3>
+                                    <div class="admin-card-actions">
+                                        <a href="/admin/ensaios/<%= ensaio.id %>/editar" class="btn-primary">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <form action="/admin/ensaios/<%= ensaio.id %>/excluir" method="POST" style="display: inline;">
+                                            <button type="submit" class="btn-danger" onclick="return confirm('Tem certeza que deseja excluir este ensaio?')">
+                                                <i class="fas fa-trash"></i> Excluir
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+
+            <% if (ensaiosPorCategoria.especial && ensaiosPorCategoria.especial.length > 0) { %>
+                <div class="admin-category">
+                    <h2>Especial</h2>
+                    <div class="admin-grid">
+                        <% ensaiosPorCategoria.especial.forEach(ensaio => { %>
+                            <div class="admin-card">
+                                <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                <div class="admin-card-content">
+                                    <h3><%= ensaio.titulo %></h3>
+                                    <div class="admin-card-actions">
+                                        <a href="/admin/ensaios/<%= ensaio.id %>/editar" class="btn-primary">
+                                            <i class="fas fa-edit"></i> Editar
+                                        </a>
+                                        <form action="/admin/ensaios/<%= ensaio.id %>/excluir" method="POST" style="display: inline;">
+                                            <button type="submit" class="btn-danger" onclick="return confirm('Tem certeza que deseja excluir este ensaio?')">
+                                                <i class="fas fa-trash"></i> Excluir
+                                            </button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        <% }) %>
+                    </div>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html> 

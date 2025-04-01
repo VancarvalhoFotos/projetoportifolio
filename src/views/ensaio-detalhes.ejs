@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= ensaio.titulo %> - Vanessa Carvalho Fotografias</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Fancybox CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css"/>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <section class="ensaio-detalhes">
+        <div class="container">
+            <div class="ensaio-header">
+                <h1><%= ensaio.titulo %></h1>
+                <p class="categoria"><%= ensaio.categoria %></p>
+                <p class="descricao"><%= ensaio.descricao %></p>
+            </div>
+
+            <div class="galeria">
+                <% ensaio.imagens.forEach((imagem, index) => { %>
+                    <div class="galeria-item">
+                        <a href="<%= imagem.url %>" 
+                           data-fancybox="gallery" 
+                           data-caption="<%= imagem.descricao || ensaio.titulo %>">
+                            <img src="<%= imagem.url %>" alt="<%= imagem.descricao || ensaio.titulo %>">
+                            <div class="galeria-overlay">
+                                <span class="numero"><%= index + 1 %>/<%= ensaio.imagens.length %></span>
+                            </div>
+                        </a>
+                    </div>
+                <% }); %>
+            </div>
+
+            <div class="voltar">
+                <a href="/ensaios" class="btn-voltar">
+                    <i class="fas fa-arrow-left"></i>
+                    Voltar ao Portfólio
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Vanessa Carvalho Fotografias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Fancybox JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Inicializar Fancybox
+            Fancybox.bind("[data-fancybox]", {
+                // Opções do Fancybox
+                loop: true,
+                buttons: [
+                    "zoom",
+                    "slideShow",
+                    "fullScreen",
+                    "close"
+                ],
+                l10n: {
+                    CLOSE: "Fechar",
+                    NEXT: "Próximo",
+                    PREV: "Anterior",
+                    ZOOM: "Zoom",
+                    SLIDESHOW: "Apresentação",
+                    FULLSCREEN: "Tela cheia"
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

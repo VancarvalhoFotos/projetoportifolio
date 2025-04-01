@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanessa Carvalho Fotografias</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/js/carousel.js" defer></script>
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="main-content">
+        <!-- Hero Section -->
+        <section class="hero" id="inicio">
+            <div class="hero-carousel">
+                <div class="carousel-container">
+                    <div class="carousel-slide">
+                        <img src="/images/portfolio/newborn-8.jpg" alt="Ensaio Newborn">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/images/portfolio/alice-no-pais-das-maravilhas.jpg" alt="Acompanhamento Mensal">
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="/images/portfolio/smash-the-cake.jpg" alt="Smash the Cake">
+                    </div>
+                </div>
+                <div class="carousel-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="hero-content container">
+                <h1>Capturando Momentos Especiais</h1>
+                <p>Transformando os primeiros momentos da vida em memórias eternas</p>
+                <a href="#contato" class="btn">Agende seu Ensaio</a>
+            </div>
+        </section>
+
+        <!-- Sobre Section -->
+        <section class="about" id="sobre">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>Sobre Mim</h2>
+                        <p>Com mais de 5 anos de experiência, dedico minha vida a capturar os momentos mais preciosos da vida. Minha paixão pela fotografia de bebês e gestantes se reflete em cada imagem, transformando instantes em memórias eternas.</p>
+                        <p>Especializada em ensaios newborn, acompanhamento mensal do primeiro ano de vida, smash the cake e gestantes, ofereço um atendimento personalizado e acolhedor, sempre no conforto do seu lar.</p>
+                    </div>
+                    <div class="about-image">
+                        <img src="/images/portfolio/sobre-vanessa.jpg" alt="Vanessa Carvalho">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Serviços Section -->
+        <section class="services" id="servicos">
+            <div class="container">
+                <h2>Tipo de Sessões</h2>
+                <div class="services-grid">
+                    <div class="service-item">
+                        <div class="gestante-carousel">
+                            <div class="carousel-container">
+                                <% if (ensaiosPorCategoria.gestante && ensaiosPorCategoria.gestante.length > 0) { %>
+                                    <% ensaiosPorCategoria.gestante.forEach(ensaio => { %>
+                                        <div class="carousel-slide">
+                                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        </div>
+                                    <% }); %>
+                                <% } else { %>
+                                    <div class="carousel-slide">
+                                        <img src="/images/portfolio/gestante-2.jpg" alt="Gestante">
+                                    </div>
+                                <% } %>
+                            </div>
+                            <div class="carousel-dots">
+                                <% if (ensaiosPorCategoria.gestante && ensaiosPorCategoria.gestante.length > 0) { %>
+                                    <% ensaiosPorCategoria.gestante.forEach((_, index) => { %>
+                                        <span class="dot <%= index === 0 ? 'active' : '' %>"></span>
+                                    <% }); %>
+                                <% } else { %>
+                                    <span class="dot active"></span>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="service-item-content">
+                            <h3>Gestante</h3>
+                            <p>A gestação é um momento único e transformador, cheio de amor, expectativa e sonhos. Nossa sessão fotográfica busca capturar toda a beleza e a essência dessa fase tão especial, especialmente em ambientes livres e naturais. Cenários como parques, campos floridos ou outros espaços ao ar livre são ideais para refletir a serenidade e a conexão entre mãe, bebê e natureza.</p>
+                            <p>Com iluminação natural e paisagens encantadoras, cada foto exalta a leveza e a força desse período tão inesquecível, destacando as emoções genuínas e espontâneas da maternidade. As poses são pensadas para integrar a gestante ao ambiente, criando imagens que celebram a vida em harmonia com o mundo ao seu redor.</p>
+                            <p>Mais do que um registro, é uma oportunidade de eternizar esse capítulo tão especial de forma autêntica e cheia de vida. Pronta para celebrar esse momento incrível em cenários que representam toda a sua liberdade e essência?</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="gestante-carousel">
+                            <div class="carousel-container">
+                                <% if (ensaiosPorCategoria.newborn && ensaiosPorCategoria.newborn.length > 0) { %>
+                                    <% ensaiosPorCategoria.newborn.forEach(ensaio => { %>
+                                        <div class="carousel-slide">
+                                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        </div>
+                                    <% }); %>
+                                <% } else { %>
+                                    <div class="carousel-slide">
+                                        <img src="/images/portfolio/newborn-8.jpg" alt="Newborn">
+                                    </div>
+                                <% } %>
+                            </div>
+                            <div class="carousel-dots">
+                                <% if (ensaiosPorCategoria.newborn && ensaiosPorCategoria.newborn.length > 0) { %>
+                                    <% ensaiosPorCategoria.newborn.forEach((_, index) => { %>
+                                        <span class="dot <%= index === 0 ? 'active' : '' %>"></span>
+                                    <% }); %>
+                                <% } else { %>
+                                    <span class="dot active"></span>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="service-item-content">
+                            <h3>Newborn</h3>
+                            <p>A fotografia de newborn é uma arte delicada que captura os primeiros dias de vida do seu bebê, com toda a sua pureza e fragilidade. É um trabalho que exige cuidado, paciência e sensibilidade, garantindo que cada pose seja confortável e segura para o bebê.</p>
+                            <p>Durante a sessão, usamos cenários cuidadosamente planejados, tecidos macios e acessórios encantadores que complementam a beleza natural do recém-nascido. Cada foto é pensada para transmitir o amor e a ternura desses momentos únicos, resultando em imagens atemporais que serão um tesouro para a família.</p>
+                            <p>É mais do que uma fotografia; é a celebração da vida que acaba de começar, transformando pequenos detalhes – como o toque das mãozinhas, os pezinhos minúsculos e as expressões serenas – em memórias eternas que contam uma história especial.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <img src="/images/portfolio/branca-de-neve.jpg" alt="Acompanhamento mensal">
+                        <div class="service-item-content">
+                            <h3>Acompanhamento mensal</h3>
+                            <p>A fotografia de acompanhamento mensal é uma forma especial de documentar o crescimento e as conquistas do seu bebê durante o primeiro ano de vida. A cada mês, registramos momentos únicos que marcam as fases de desenvolvimento, como os primeiros sorrisos, as descobertas curiosas e as novas expressões.</p>
+                            <p>As sessões fotográficas são planejadas com carinho, utilizando cenários temáticos, acessórios delicados e criatividade para capturar a personalidade única do seu pequeno. Ao final do primeiro ano, todas as imagens se transformam em um álbum completo que conta a história do crescimento do bebê, mês a mês, criando uma lembrança emocionante e repleta de afeto.</p>
+                        </div>
+                    </div>
+                    <div class="service-item">
+                        <div class="gestante-carousel">
+                            <div class="carousel-container">
+                                <% if (ensaiosPorCategoria.smash && ensaiosPorCategoria.smash.length > 0) { %>
+                                    <% ensaiosPorCategoria.smash.forEach(ensaio => { %>
+                                        <div class="carousel-slide">
+                                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        </div>
+                                    <% }); %>
+                                <% } else { %>
+                                    <div class="carousel-slide">
+                                        <img src="/images/portfolio/smash-the-cake.jpg" alt="Smash The Cake">
+                                    </div>
+                                <% } %>
+                            </div>
+                            <div class="carousel-dots">
+                                <% if (ensaiosPorCategoria.smash && ensaiosPorCategoria.smash.length > 0) { %>
+                                    <% ensaiosPorCategoria.smash.forEach((_, index) => { %>
+                                        <span class="dot <%= index === 0 ? 'active' : '' %>"></span>
+                                    <% }); %>
+                                <% } else { %>
+                                    <span class="dot active"></span>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="service-item-content">
+                            <h3>Smash The Cake</h3>
+                            <p>Comemore o primeiro aniversário do seu bebê de forma única e inesquecível com uma sessão de Smash The Cake! Essa experiência divertida e descontraída permite que o bebê explore um bolo delicioso com as mãos (e às vezes com o rosto!), criando momentos cheios de alegria, expressões adoráveis e risadas espontâneas.</p>
+                            <p>A sessão é cuidadosamente planejada, com cenários temáticos, cores vibrantes e detalhes encantadores que refletem a personalidade e o estilo da família. Cada clique captura a pureza e a diversão desse momento tão especial, resultando em fotografias que serão lembranças preciosas por toda a vida.</p>
+                            <p>Mais do que uma sessão fotográfica, é uma celebração do primeiro ano repleto de conquistas e descobertas. Pronto para eternizar essa etapa tão doce?</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfólio Section -->
+        <section class="portfolio-section">
+            <div class="container">
+                <h2>Portfólio</h2>
+                
+                <!-- Newborn -->
+                <% if (ensaiosPorCategoria.newborn && ensaiosPorCategoria.newborn.length > 0) { %>
+                    <div class="portfolio-category">
+                        <h3>Newborn</h3>
+                        <div class="portfolio-grid">
+                            <% ensaiosPorCategoria.newborn.forEach(ensaio => { %>
+                                <div class="portfolio-item">
+                                    <a href="/ensaios/<%= ensaio.id %>">
+                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        <div class="portfolio-overlay">
+                                            <h4><%= ensaio.titulo %></h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Acompanhamento Mensal -->
+                <% if (ensaiosPorCategoria.mensal && ensaiosPorCategoria.mensal.length > 0) { %>
+                    <div class="portfolio-category">
+                        <h3>Acompanhamento Mensal</h3>
+                        <div class="portfolio-grid">
+                            <% ensaiosPorCategoria.mensal.forEach(ensaio => { %>
+                                <div class="portfolio-item">
+                                    <a href="/ensaios/<%= ensaio.id %>">
+                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        <div class="portfolio-overlay">
+                                            <h4><%= ensaio.titulo %></h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Smash The Cake -->
+                <% if (ensaiosPorCategoria.smash && ensaiosPorCategoria.smash.length > 0) { %>
+                    <div class="portfolio-category">
+                        <h3>Smash The Cake</h3>
+                        <div class="portfolio-grid">
+                            <% ensaiosPorCategoria.smash.forEach(ensaio => { %>
+                                <div class="portfolio-item">
+                                    <a href="/ensaios/<%= ensaio.id %>">
+                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        <div class="portfolio-overlay">
+                                            <h4><%= ensaio.titulo %></h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Gestante -->
+                <% if (ensaiosPorCategoria.gestante && ensaiosPorCategoria.gestante.length > 0) { %>
+                    <div class="portfolio-category">
+                        <h3>Gestante</h3>
+                        <div class="portfolio-grid">
+                            <% ensaiosPorCategoria.gestante.forEach(ensaio => { %>
+                                <div class="portfolio-item">
+                                    <a href="/ensaios/<%= ensaio.id %>">
+                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        <div class="portfolio-overlay">
+                                            <h4><%= ensaio.titulo %></h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% } %>
+
+                <!-- Especial -->
+                <% if (ensaiosPorCategoria.especial && ensaiosPorCategoria.especial.length > 0) { %>
+                    <div class="portfolio-category">
+                        <h3>Especial</h3>
+                        <div class="portfolio-grid">
+                            <% ensaiosPorCategoria.especial.forEach(ensaio => { %>
+                                <div class="portfolio-item">
+                                    <a href="/ensaios/<%= ensaio.id %>">
+                                        <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                                        <div class="portfolio-overlay">
+                                            <h4><%= ensaio.titulo %></h4>
+                                        </div>
+                                    </a>
+                                </div>
+                            <% }); %>
+                        </div>
+                    </div>
+                <% } %>
+            </div>
+        </section>
+
+        <!-- Contato Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h2>Entre em Contato</h2>
+                <% if (typeof success_msg !== 'undefined' && success_msg) { %>
+                    <div class="alert alert-success">
+                        <%= success_msg %>
+                    </div>
+                <% } %>
+                <% if (error_msg && error_msg.length > 0) { %>
+                    <div class="alert alert-error">
+                        <%= error_msg %>
+                    </div>
+                <% } %>
+                <form action="/contato" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telefone">Telefone</label>
+                        <input type="tel" id="telefone" name="telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="mensagem">Mensagem</label>
+                        <textarea id="mensagem" name="mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Enviar Mensagem</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://www.instagram.com/fotografiavanessacarvalho/" target="_blank" class="social-icon">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.facebook.com/vanessacarvalhofotografias/" target="_blank" class="social-icon">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="https://www.tiktok.com/@vanessacfotografias52" target="_blank" class="social-icon">
+                    <i class="fab fa-tiktok"></i>
+                </a>
+                <a href="https://api.whatsapp.com/send/?phone=+5511937601580&text=Ol%C3%A1%20Vanessa!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20ensaios!&type=phone_number&app_absent=0&source_url=&context=&icebreaker=Ol%C3%A1%20Vanessa!%20Gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20os%20ensaios!" target="_blank" class="social-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <p>&copy; <%= new Date().getFullYear() %> Vanessa Carvalho Fotografias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    <script>
+        // Menu Mobile
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Fecha o menu ao clicar em um link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+    <script src="/js/main.js"></script>
+</body>
+</html> 

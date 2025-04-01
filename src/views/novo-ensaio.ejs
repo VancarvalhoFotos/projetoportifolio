@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Novo Ensaio - Vanessa Carvalho Fotografias</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">
+                <img src="/images/Logo/logo.png" alt="Vanessa Carvalho Fotografias">
+            </div>
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links">
+                <div class="logo">
+                    <img src="/images/Logo/logo.png" alt="Vanessa Carvalho Fotografias">
+                </div>
+                <a href="/">Início</a>
+                <a href="/#servicos">Serviços</a>
+                <a href="/portfolio">Portfólio</a>
+                <a href="/#sobre">Sobre</a>
+                <a href="/#contato">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="novo-ensaio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Novo Ensaio</h2>
+                <p class="subtitle">Adicione um novo ensaio ao portfólio</p>
+            </div>
+
+            <div class="form-container">
+                <% if (typeof error !== 'undefined' && error) { %>
+                    <div class="error-message">
+                        <%= error %>
+                    </div>
+                <% } %>
+                <form action="/novo-ensaio" method="POST" enctype="multipart/form-data" class="form-ensaio">
+                    <div class="form-group">
+                        <label for="titulo">Título do Ensaio</label>
+                        <input type="text" id="titulo" name="titulo" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categoria">Categoria</label>
+                        <select id="categoria" name="categoria" required>
+                            <option value="">Selecione uma categoria</option>
+                            <option value="Gestante">Ensaios: Gestantes</option>
+                            <option value="Newborn">Ensaios: Newborn</option>
+                            <option value="Acompanhamento Mensal">Ensaios: Acompanhamento Mensal</option>
+                            <option value="Smash The Cake">Ensaios: Smash The Cake</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="descricao">Descrição</label>
+                        <textarea id="descricao" name="descricao" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="imagens">Imagens (máximo 5)</label>
+                        <input type="file" id="imagens" name="imagens" accept="image/*" multiple required>
+                        <p class="help-text">A primeira imagem será usada como thumbnail no portfólio</p>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">
+                            <i class="fas fa-save"></i>
+                            Salvar Ensaio
+                        </button>
+                        <a href="/portfolio" class="btn-secondary">
+                            <i class="fas fa-times"></i>
+                            Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Vanessa Carvalho Fotografias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+
+            // Validação do número máximo de imagens
+            const inputImagens = document.getElementById('imagens');
+            inputImagens.addEventListener('change', function() {
+                if (this.files.length > 5) {
+                    alert('Por favor, selecione no máximo 5 imagens.');
+                    this.value = '';
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

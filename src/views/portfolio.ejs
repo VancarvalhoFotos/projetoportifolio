@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Vanessa Carvalho Fotografias</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <section class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Portfólio</h2>
+                <p class="subtitle">Momentos especiais eternizados em imagens</p>
+            </div>
+
+            <!-- Ensaios: Gestantes -->
+            <div class="portfolio-category">
+                <div class="category-header">
+                    <h3>Ensaios: Gestantes</h3>
+                    <p class="category-description">Capturando a beleza e a magia da gestação, cada foto conta uma história única de amor e expectativa. Nossos ensaios são realizados em ambientes naturais, onde a luz e a paisagem se unem para criar imagens atemporais que celebram esse momento tão especial.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <% ensaios.filter(ensaio => ensaio.categoria === 'Gestante').forEach(ensaio => { %>
+                        <a href="/ensaios/<%= ensaio.id %>" class="portfolio-item">
+                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                            <div class="portfolio-overlay">
+                                <h4><%= ensaio.titulo %></h4>
+                            </div>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+
+            <!-- Ensaios: Newborn -->
+            <div class="portfolio-category">
+                <div class="category-header">
+                    <h3>Ensaios: Newborn</h3>
+                    <p class="category-description">Os primeiros dias de vida são mágicos e únicos. Nossos ensaios newborn são realizados com todo o cuidado e carinho, capturando cada detalhe, cada expressão e cada momento especial do seu bebê. Um registro delicado e emocionante que eterniza o início dessa jornada.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <% ensaios.filter(ensaio => ensaio.categoria === 'Newborn').forEach(ensaio => { %>
+                        <a href="/ensaios/<%= ensaio.id %>" class="portfolio-item">
+                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                            <div class="portfolio-overlay">
+                                <h4><%= ensaio.titulo %></h4>
+                            </div>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+
+            <!-- Ensaios: Acompanhamento Mensal -->
+            <div class="portfolio-category">
+                <div class="category-header">
+                    <h3>Ensaios: Acompanhamento Mensal</h3>
+                    <p class="category-description">Documentar o crescimento do seu bebê mês a mês é uma forma especial de eternizar cada conquista e mudança. Nossos ensaios de acompanhamento mensal são criativos e divertidos, com temas diferentes a cada sessão, criando um álbum único que conta a história do primeiro ano de vida do seu pequeno.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <% ensaios.filter(ensaio => ensaio.categoria === 'Acompanhamento Mensal').forEach(ensaio => { %>
+                        <a href="/ensaios/<%= ensaio.id %>" class="portfolio-item">
+                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                            <div class="portfolio-overlay">
+                                <h4><%= ensaio.titulo %></h4>
+                            </div>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+
+            <!-- Ensaios: Smash The Cake -->
+            <div class="portfolio-category">
+                <div class="category-header">
+                    <h3>Ensaios: Smash The Cake</h3>
+                    <p class="category-description">Celebre o primeiro aniversário do seu bebê de forma única e divertida! O Smash The Cake é uma sessão especial onde seu pequeno pode explorar e se divertir com um bolo decorado especialmente para ele. Um momento cheio de alegria, expressões adoráveis e memórias que ficarão para sempre.</p>
+                </div>
+                <div class="portfolio-grid">
+                    <% ensaios.filter(ensaio => ensaio.categoria === 'Smash The Cake').forEach(ensaio => { %>
+                        <a href="/ensaios/<%= ensaio.id %>" class="portfolio-item">
+                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                            <div class="portfolio-overlay">
+                                <h4><%= ensaio.titulo %></h4>
+                            </div>
+                        </a>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Vanessa Carvalho Fotografias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html> 

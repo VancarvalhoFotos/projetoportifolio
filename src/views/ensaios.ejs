@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ensaios - Vanessa Carvalho Fotografias</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <%- include('partials/navbar') %>
+
+    <main class="ensaios-container">
+        <section class="portfolio-section">
+            <div class="container">
+                <h2>Portfólio</h2>
+                <p class="portfolio-intro">
+                    Bem-vindo ao meu portfólio! Aqui você encontrará uma seleção dos meus trabalhos mais recentes, 
+                    organizados por categorias. Cada ensaio conta uma história única e especial.
+                </p>
+            </div>
+        </section>
+
+        <% Object.entries(ensaiosPorCategoria).forEach(([categoria, ensaios]) => { %>
+            <section class="ensaio-categoria">
+                <h2><%= categoria %></h2>
+                <div class="ensaio-grid">
+                    <% ensaios.forEach(ensaio => { %>
+                        <div class="ensaio-card">
+                            <img src="<%= ensaio.imagens[0].url %>" alt="<%= ensaio.titulo %>">
+                            <div class="ensaio-card-content">
+                                <h3><%= ensaio.titulo %></h3>
+                                <a href="/ensaios/<%= ensaio._id %>" class="btn-primary">
+                                    Ver mais
+                                    <i class="fas fa-arrow-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    <% }); %>
+                </div>
+            </section>
+        <% }); %>
+
+        <section class="portfolio-cta">
+            <div class="container">
+                <h3>Quer fazer um ensaio especial?</h3>
+                <p>Entre em contato para agendar seu ensaio e criar memórias únicas!</p>
+                <a href="/#contato" class="btn-primary">Agende seu Ensaio</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+            </div>
+            <p>&copy; 2024 Vanessa Carvalho Fotografias. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const navLinks = document.querySelector('.nav-links');
+            
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+                menuToggle.classList.toggle('active');
+            });
+        });
+    </script>
+
+    <script src="/js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,21 @@
+<nav class="admin-nav">
+    <div class="nav-content">
+        <div class="logo">
+            <img src="/images/Logo/logo.png" alt="Logo Vanessa">
+        </div>
+        <div class="nav-links">
+            <a href="/admin/dashboard" class="<%= path === '/admin/dashboard' ? 'active' : '' %>">
+                <i class="fas fa-home"></i> Dashboard
+            </a>
+            <a href="/admin/novo-ensaio" class="<%= path === '/admin/novo-ensaio' ? 'active' : '' %>">
+                <i class="fas fa-plus"></i> Novo Ensaio
+            </a>
+            <a href="/admin/ensaios" class="<%= path === '/admin/ensaios' ? 'active' : '' %>">
+                <i class="fas fa-images"></i> Gerenciar Ensaios
+            </a>
+            <a href="/admin/logout">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </a>
+        </div>
+    </div>
+</nav> 

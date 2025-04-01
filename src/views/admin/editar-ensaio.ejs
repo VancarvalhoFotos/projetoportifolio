@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Ensaio - Admin</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="admin-ensaios">
+        <%- include('partials/navbar') %>
+
+        <div class="admin-content">
+            <div class="admin-header">
+                <h1>Editar Ensaio</h1>
+            </div>
+
+            <div class="editar-ensaio">
+                <div class="editar-ensaio-header">
+                    <h1>Editar Ensaio</h1>
+                    <p>Atualize as informações do ensaio</p>
+                </div>
+
+                <div class="editar-ensaio-form">
+                    <form action="/admin/ensaios/<%= ensaio.id %>/editar" method="POST" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="titulo">Título</label>
+                            <input type="text" id="titulo" name="titulo" value="<%= ensaio.titulo %>" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="categoria">Categoria</label>
+                            <select id="categoria" name="categoria" required>
+                                <option value="Newborn" <%= ensaio.categoria === 'Newborn' ? 'selected' : '' %>>Newborn</option>
+                                <option value="Acompanhamento Mensal" <%= ensaio.categoria === 'Acompanhamento Mensal' ? 'selected' : '' %>>Acompanhamento Mensal</option>
+                                <option value="Smash The Cake" <%= ensaio.categoria === 'Smash The Cake' ? 'selected' : '' %>>Smash The Cake</option>
+                                <option value="Gestante" <%= ensaio.categoria === 'Gestante' ? 'selected' : '' %>>Gestante</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="descricao">Descrição</label>
+                            <textarea id="descricao" name="descricao" rows="5" required><%= ensaio.descricao %></textarea>
+                        </div>
+
+                        <div class="imagens-atuais">
+                            <h3>Imagens Atuais</h3>
+                            <div class="imagens-grid">
+                                <% ensaio.imagens.forEach(imagem => { %>
+                                    <div class="imagem-card">
+                                        <img src="<%= imagem.url %>" alt="Imagem do ensaio">
+                                        <button type="button" class="remove-imagem" data-id="<%= imagem.id %>">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                <% }) %>
+                            </div>
+                        </div>
+
+                        <div class="novas-imagens">
+                            <h3>Adicionar Novas Imagens</h3>
+                            <input type="file" id="imagens" name="imagens" multiple accept="image/*">
+                            <div id="imagens-preview" class="imagens-preview"></div>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i>
+                                Salvar Alterações
+                            </button>
+                            <a href="/admin/ensaios" class="btn btn-secondary">
+                                <i class="fas fa-times"></i>
+                                Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Preview de novas imagens
+        document.getElementById('imagens').addEventListener('change', function(e) {
+            const preview = document.getElementById('imagens-preview');
+            preview.innerHTML = '';
+            
+            [...e.target.files].forEach(file => {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const div = document.createElement('div');
+                    div.className = 'imagem-preview';
+                    div.innerHTML = `
+                        <img src="${e.target.result}" alt="Preview">
+                        <button type="button" class="remove-preview">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    `;
+                    preview.appendChild(div);
+                }
+                reader.readAsDataURL(file);
+            });
+        });
+
+        // Remover preview de imagem
+        document.getElementById('imagens-preview').addEventListener('click', function(e) {
+            if (e.target.closest('.remove-preview')) {
+                e.target.closest('.imagem-preview').remove();
+            }
+        });
+
+        // Remover imagem atual
+        document.querySelectorAll('.remove-imagem').forEach(button => {
+            button.addEventListener('click', function() {
+                const imageId = this.dataset.id;
+                const imagesToRemove = JSON.parse(document.getElementById('removeImages').value || '[]');
+                imagesToRemove.push(imageId);
+                document.getElementById('removeImages').value = JSON.stringify(imagesToRemove);
+                this.closest('.imagem-card').remove();
+            });
+        });
+    </script>
+</body>
+</html> 
